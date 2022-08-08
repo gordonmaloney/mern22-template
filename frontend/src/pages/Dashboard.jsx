@@ -47,7 +47,9 @@ function Dashboard() {
       <section className="content">
         {goals.length > 0 ? (
           <div className="goals">
-            {[...goals].reverse().map((goal) => (
+            {[...goals]
+            .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+            .map((goal) => (
               <GoalItem key={goal._id} goal={goal} />
             ))}
           </div>
