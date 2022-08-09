@@ -5,6 +5,7 @@ import GoalForm from "../components/GoalForm";
 import Spinner from "../components/Spinner";
 import { getGoals, reset } from "../features/goals/goalSlice";
 import GoalItem from "../components/GoalItem";
+import AllGoals from "./AllGoals";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ function Dashboard() {
   const { goals, isLoading, isError, message } = useSelector(
     (state) => state.goals
   );
+
+
 
   useEffect(() => {
     if (isError) {
@@ -57,6 +60,8 @@ function Dashboard() {
           <h3>You have not set any goals yet.</h3>
         )}
       </section>
+
+      <AllGoals />
     </>
   );
 }

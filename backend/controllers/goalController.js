@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const Goal = require("../models/goalModel");
 const User = require("../models/userModel");
 
-//@desc get all goals
+//@desc get user goals
 //@route GET /api/goals
 //@access private
 const getGoals = asyncHandler(async (req, res) => {
@@ -87,9 +87,21 @@ const deleteGoal = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id });
 });
 
+
+//@desc get all goals
+//@route GET /api/goals/all
+//@access private
+const getAllGoals = asyncHandler(async (req, res) => {
+  const goals = await Goal.find();
+
+  res.status(200).json(goals);
+});
+
+
 module.exports = {
   getGoals,
   setGoal,
   updateGoal,
   deleteGoal,
+  getAllGoals,
 };
